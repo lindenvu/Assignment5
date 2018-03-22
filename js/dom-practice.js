@@ -12,7 +12,8 @@ btn2.setAttribute("onclick", "writeMessage('Button 2: ')");
 
 //STEP 3
 var btn3 = window.document.getElementById("step3");
-btn3.addEventListener("click", writeMessage('Button 3: '));
+var writeMessageButton3 = function () { "use strict"; window.alert("Button 3: I have been clicked!"); };
+btn3.addEventListener("click", writeMessageButton3);
 
 //STEP 4
 var btn4 = window.document.getElementById("step4");
@@ -21,6 +22,9 @@ btn4.addEventListener("click", function () { "use strict"; window.alert("Button 
 //STEP 5
 
 //STEP 6
+var link6 = window.document.getElementById("redirect");
+link6.setAttribute("href", "#");
+link6.setAttribute("onclick", "return writeMessage('Link 6: ')");
 
 //STEP 7
 
