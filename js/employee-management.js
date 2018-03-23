@@ -12,6 +12,18 @@ var employee_list = [["Zak Ruvalcaba", "Engineering", 3333],
                  ["Jane Caruthers", "Finance", 3451]];
 
 
+function printArray() {
+    "use strict";
+    var i, html = "<tr><td>Showing " + employee_list.length + " Employees</td></tr>";
+    html += "<tr><td>Name</td><td>Title</td><td>Extension</td><td>&nbsp;</td></tr>";
+    for (i = 0; i < employee_list.length; i += 1) {
+        html += "<tr><td>" + employee_list[i][0] + "</td><td>" + employee_list[i][1] + "</td><td>" + employee_list[i][2] + "</td><td><input type=\"button\" id=\"" + i + "\" value=\"delete\" onclick=\"delEmployee(" + i + ")\"></td></tr>";
+    }
+    $("employees").innerHTML = html;
+}
+
+
+
 
 var add_employee = $("add");
 add_employee.addEventListener("click", function () {
@@ -23,12 +35,7 @@ add_employee.addEventListener("click", function () {
         if ($("extension").value === "") {$("msg3").innerHTML = errorMessage; } else {$("msg3").innerHTML =  blank; }
     } else {
         employee_list[employee_list.length] = [$("name").value, $("title").value, $("extension").value];
-        var i, html = "<tr><td>Showing " + employee_list.length + " Employees</td></tr>";
-        html += "<tr><td>Name</td><td>Title</td><td>Extension</td><td>&nbsp;</td></tr>";
-        for (i = 0; i < employee_list.length; i += 1) {
-            html += "<tr><td>" + employee_list[i][0] + "</td><td>" + employee_list[i][1] + "</td><td>" + employee_list[i][2] + "</td><td><input type=\"button\" id=\"" + i + "\" value=\"delete\" onclick=\"delEmployee(" + i + ")\"></td></tr>";
-        }
-        $("employees").innerHTML = html;
+        printArray();
         $("msg1").innerHTML =  blank;
         $("msg2").innerHTML =  blank;
         $("msg3").innerHTML =  blank;
@@ -48,22 +55,13 @@ function delEmployee(id) {
         }
     }
     employee_list = new_list;
-    var i, html = "<tr><td>Showing " + employee_list.length + " Employees</td></tr>";
-    html += "<tr><td>Name</td><td>Title</td><td>Extension</td><td>&nbsp;</td></tr>";
-    for (i = 0; i < employee_list.length; i += 1) {
-        html += "<tr><td>" + employee_list[i][0] + "</td><td>" + employee_list[i][1] + "</td><td>" + employee_list[i][2] + "</td><td><input type=\"button\" id=\"" + i + "\" value=\"delete\" onclick=\"delEmployee(" + i + ")\"></td></tr>";
-    }
-    $("employees").innerHTML = html;
+    printArray();
 }
+
 
 var showEmployees = function () {
     "use strict";
-    var i, html = "<tr><td>Showing " + employee_list.length + " Employees</td></tr>";
-    html += "<tr><td>Name</td><td>Title</td><td>Extension</td><td>&nbsp;</td></tr>";
-    for (i = 0; i < employee_list.length; i += 1) {
-        html += "<tr><td>" + employee_list[i][0] + "</td><td>" + employee_list[i][1] + "</td><td>" + employee_list[i][2] + "</td><td><input type=\"button\" id=\"" + i + "\" value=\"delete\" onclick=\"delEmployee(" + i + ")\"></td></tr>";
-    }
-    $("employees").innerHTML = html;
+    printArray();
 };
 
 window.addEventListener("load", showEmployees);
