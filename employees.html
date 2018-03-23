@@ -3,9 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Assignment 05 - Employee Management Application</title>
-    <script src="js/employee-management.js"></script>
+
 </head>
 <body>
-    
+    <main>
+        <h1>The Employee Management Application</h1>
+        <h3>Add Employee</h3>
+        <form id="add_employee">
+           <table>
+               <tr>
+                   <td><strong>Name:</strong></td>
+                   <td><input type="text" id="name"></td>
+                   <td>&nbsp;</td>
+               </tr>
+               <tr>
+                   <td><strong>Title:</strong></td>
+                   <td><input type="text" id="title"></td>
+                   <td>&nbsp;</td>
+               </tr>               
+               <tr>
+                   <td><strong>Extension:</strong></td>
+                   <td><input type="text" id="extension"></td>
+                   <td>&nbsp;</td>
+               </tr>
+               <tr>
+                   <td>&nbsp;</td>
+                   <td><input type="button" id="add" value="add"></td>
+                   <td>&nbsp;</td>
+               </tr> 
+            </table>
+        </form>
+        <h2 id="employee_header">&nbsp;</h2>
+        <table id="employees"></table>
+    </main>
+    <script src="js/employee-management.js"></script>
 </body>
 </html>
