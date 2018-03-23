@@ -5,7 +5,7 @@ var $ = function (id) {
     return window.document.getElementById(id);
 };
 
-var name, title, extension, employee_list = [["Zak Ruvalcaba", "Engineering", 3333],
+var employee_list = [["Zak Ruvalcaba", "Engineering", 3333],
                  ["Sally Smith", "Quality Assurance", 3424],
                  ["Fred Franklin", "Sales", 3346],
                  ["John Smith", "Marketing", 3232],
@@ -16,12 +16,11 @@ var name, title, extension, employee_list = [["Zak Ruvalcaba", "Engineering", 33
 var add_employee = $("add");
 add_employee.addEventListener("click", function () {
     "use strict";
-    var errorMessage = "<span style=\"color:red\">This field is required.</span>";
+    var errorMessage = "<span style=\"color:red\">This field is required.</span>", blank = "&nbsp;";
     if ($("name").value === "" || $("title").value  === "" || $("extension").value  === "") {
-        if ($("name").value === "") {$("msg1").innerHTML = errorMessage; }
-        if ($("title").value === "") {$("msg2").innerHTML = errorMessage; }
-        if ($("extension").value === "") {$("msg3").innerHTML = errorMessage; }
-        window.console.log("Missing a required field");
+        if ($("name").value === "") {$("msg1").innerHTML = errorMessage; } else {$("msg1").innerHTML =  blank; }
+        if ($("title").value === "") {$("msg2").innerHTML = errorMessage; } else {$("msg2").innerHTML =  blank; }
+        if ($("extension").value === "") {$("msg3").innerHTML = errorMessage; } else {$("msg3").innerHTML =  blank; }
     } else {
         employee_list[employee_list.length] = [$("name").value, $("title").value, $("extension").value];
         var i, html = "<tr><td>Showing " + employee_list.length + " Employees</td></tr>";
@@ -30,6 +29,12 @@ add_employee.addEventListener("click", function () {
             html += "<tr><td>" + employee_list[i][0] + "</td><td>" + employee_list[i][1] + "</td><td>" + employee_list[i][2] + "</td><td><input type=\"button\" id=\"" + i + "\" value=\"delete\" onclick=\"delEmployee(" + i + ")\"></td></tr>";
         }
         $("employees").innerHTML = html;
+        $("msg1").innerHTML =  blank;
+        $("msg2").innerHTML =  blank;
+        $("msg3").innerHTML =  blank;
+        $("name").value = "";
+        $("title").value = "";
+        $("extension").value = "";
     }
 });
 
@@ -61,11 +66,4 @@ var showEmployees = function () {
     $("employees").innerHTML = html;
 };
 
-
-
-
 window.addEventListener("load", showEmployees);
-var error1 = $("msg1");
-window.console.log(error1);
-window.console.log(typeof error1);
-error1.innerHTML = "<span style=\"color:red\">This field is required.</span>"; 
