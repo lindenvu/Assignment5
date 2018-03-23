@@ -65,7 +65,7 @@ var showEmployees = function () {
 
 
 window.addEventListener("load", showEmployees);
-var error1 = $("msg");
+var error1 = $("msg1");
 window.console.log(error1);
 window.console.log(typeof error1);
 error1.innerHTML = "<span style=\"color:red\">This field is required.</span>"; 
